@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./assets/fontawesome.min.css">
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>codedamn Project</title>
+  <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+          const menuBtn = document.getElementsByClassName("menu-btn-container")[0];
+          menuBtn.addEventListener("click", function (mouseEvent) {
+              mouseEvent.preventDefault();
+              this.classList.toggle("opened");
+              const asideElem = document.getElementsByTagName("aside")[0];
+              asideElem.classList.toggle("hiddenMust");
+          });
+          const parentMenuButtons = document.getElementsByClassName("hasSubMenu");
+          for (let i = 0; i < parentMenuButtons.length; i++) {
+              const menuElem = parentMenuButtons[i];
+              menuElem.addEventListener("click", function (mouseEvent) {
+                  mouseEvent.preventDefault();
+                  const subMenuElem = this.querySelector("ul");
+                  subMenuElem.classList.toggle("hiddenMust");
+                  this.classList.toggle("canOpen");
+                  this.classList.toggle("canClose");
+              });
+          }
+      });
+  </script>
+</head>
+<body>
+<main>
+  <a href="#" class="menu-btn-container opened">
+    <i class="fas fa-bars"></i>
+  </a>
+  <div class="main-container">
+    <div class="intro">
+      <h1 class="heading"><strong>Editorial</strong> by HTML5 UP</h1>
+      <div class="social">
+        <a href="#"><i class="fab fa-twitter"></i><span class="sr-only">tw</span></a>
+        <a href="#"><i class="fab fa-facebook-f"></i><span class="sr-only">fb</span></a>
+        <a href="#"><i class="fab fa-snapchat-ghost"></i><span class="sr-only">snapchat</span></a>
+        <a href="#"><i class="fab fa-instagram"></i><span class="sr-only">insta</span></a>
+        <a href="#"><i class="fab fa-medium-m"></i><span class="sr-only">medium</span></a>
+      </div>
+    </div>
+    <section class="top">
+      <div class="top-left">
+        <h1>Hi, I'm Editorial by HTML5 UP</h1>
+        <h3>A free and fully responsive site template</h3>
+        <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+          here is the text. here is the text. here is the text. here is the text. here is the text.
+          here is the text. here is the text. here is the text. here is the text. here is the text.
+          here is the text. here is the text. here is the text. here is the text. here is the text.
+          here is the text. here is the text.
+        </p>
+        <a class="more-link" href="#">learn more</a>
+      </div>
+      <div class="top-right">
+        <img src="assets/images/pic10.jpg" alt=""/>
+      </div>
+    </section>
+    <section class="mid">
+      <h1 class="mid-heading">Erat lacinia</h1>
+      <div class="card-container">
+        <div class="card-style-1">
+          <div class="icon-container">
+            <div class="box-container">
+              <div></div>
+            </div>
+            <div class="icon-wrapper"><i class="far fa-gem"></i></div>
+          </div>
+          <div class="description-container">
+            <h2>Portitor ullamcorpor</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+          </div>
+        </div>
+        <div class="card-style-1">
+          <div class="icon-container">
+            <div class="box-container">
+              <div></div>
+            </div>
+            <div class="icon-wrapper"><i class="far fa-paper-plane"></i></div>
+          </div>
+          <div class="description-container">
+            <h2>Sapien veroeros</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+          </div>
+        </div>
+        <div class="card-style-1">
+          <div class="icon-container">
+            <div class="box-container">
+              <div></div>
+            </div>
+            <div class="icon-wrapper"><i class="fas fa-rocket"></i></div>
+          </div>
+          <div class="description-container">
+            <h2>Quam lorem ipsum</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+          </div>
+        </div>
+        <div class="card-style-1">
+          <div class="icon-container">
+            <div class="box-container">
+              <div></div>
+            </div>
+            <div class="icon-wrapper"><i class="fas fa-signal"></i></div>
+          </div>
+          <div class="description-container">
+            <h2>Sed magna finibis</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bottom">
+      <h1 class="mid-heading">Ipsum sed dolor</h1>
+      <div class="card-container">
+        <div class="card-style-2">
+          <div class="img-container"><img src="assets/images/pic01.jpg" alt=""/></div>
+          <div class="description-container">
+            <h2>Interdum aenean</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+            <a class="more-link" href="#">more</a>
+          </div>
+        </div>
+        <div class="card-style-2">
+          <div class="img-container"><img src="assets/images/pic02.jpg" alt=""/></div>
+          <div class="description-container">
+            <h2>Null amet dolor</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+            <a class="more-link" href="#">more</a>
+          </div>
+        </div>
+        <div class="card-style-2">
+          <div class="img-container"><img src="assets/images/pic03.jpg" alt=""/></div>
+          <div class="description-container">
+            <h2>Tempus ullamcorper</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+            <a class="more-link" href="#">more</a>
+          </div>
+        </div>
+        <div class="card-style-2">
+          <div class="img-container"><img src="assets/images/pic04.jpg" alt=""/></div>
+          <div class="description-container">
+            <h2>Sed etiam facilis</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+            <a class="more-link" href="#">more</a>
+          </div>
+        </div>
+        <div class="card-style-2">
+          <div class="img-container"><img src="assets/images/pic05.jpg" alt=""/></div>
+          <div class="description-container">
+            <h2>Fuegiat lorem aenean</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+            <a class="more-link" href="#">more</a>
+          </div>
+        </div>
+        <div class="card-style-2">
+          <div class="img-container"><img src="assets/images/pic06.jpg" alt=""/></div>
+          <div class="description-container">
+            <h2>Amet varius aliquam</h2>
+            <p>here is the text. here is the text. here is the text. here is the text. here is the text.
+              here is the text. here is the text. here is the text. here is the text. here is the text.</p>
+            <a class="more-link" href="#">more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<aside>
+  <div class="search">
+    <input type="text" placeholder="Search"/>
+    <i class="fas fa-search"></i>
+  </div>
+  <div class="aside-container">
+    <h1 class="mid-heading">Menu</h1>
+    <nav>
+      <ul>
+        <li>homepage</li>
+        <li>generic</li>
+        <li>elements</li>
+        <li class="hasSubMenu canOpen">
+          <span>submenu</span>
+          <ul class="hiddenMust">
+            <li>sub-item-1</li>
+            <li>sub-item-2</li>
+          </ul>
+        </li>
+        <li>etiam dolore</li>
+        <li>adipiscing</li>
+        <li class="hasSubMenu canOpen">
+          <span>another submenu</span>
+          <ul class="hiddenMust">
+            <li>new-sub-item-1</li>
+            <li>new-sub-item-2</li>
+            <li>new-sub-item-3</li>
+          </ul>
+        </li>
+        <li>maximux erat</li>
+        <li>sapien mauris</li>
+        <li>amet lacinia</li>
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="aside-top">
+      <h1 class="mid-heading">Ante interdum</h1>
+      <img src="assets/images/pic07.jpg" alt=""/>
+      <p>here is the text. here is the text. here is the text.</p>
+      <hr/>
+      <img src="assets/images/pic08.jpg" alt=""/>
+      <p>here is the text. here is the text. here is the text.</p>
+      <hr/>
+      <img src="assets/images/pic09.jpg" alt=""/>
+      <p>here is the text. here is the text. here is the text.</p>
+      <a class="more-link" href="#">more</a>
+      <div class="clearfix"></div>
+    </div>
+    <div class="aside-bottom">
+      <h1 class="mid-heading">Get in touch</h1>
+      <p>here is the text. here is the text. here is the text. here is the text.
+        here is the text. here is the text. here is the text. here is the text. here is the text.
+        here is the text. here is the text.
+      </p>
+      <a href="#"><i class="fas fa-envelope"></i><span>information@untitled.tld</span></a>
+      <hr/>
+      <div><i class="fas fa-phone"></i><span>(000) 000-0000</span></div>
+      <hr/>
+      <div><i class="fas fa-home"></i><span>1234 Somewhere Road #8254 Nashville, TN 00000-0000</span></div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="aside-footer">
+      <p>&copy; Untitled. All rights reserved. Demo images: <a href="#">Unsplash</a>. Design: <a href="#">HTML5 UP</a></p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+</aside>
+</body>
+</html>
