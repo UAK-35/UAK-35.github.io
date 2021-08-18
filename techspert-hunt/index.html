@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box-Shadow</title>
+
+  <style media="screen">
+    /*<![CDATA[*/
+    * {
+      box-sizing: border-box;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+    html {
+      background-color: #fff;
+      box-sizing: border-box;
+      color: #212121;
+    }
+    body {
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      text-rendering: optimizeSpeed;
+      line-height: 1.5;
+      text-align: center;
+      background-color: #eeeeee;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .transition-all {
+      transition: all .3s ease-in;
+    }
+    body .output {
+      /* margin: 0 auto; */
+      position: relative;
+      float: none;
+      /* background-color: #fff; */
+      /* background-color: #ebebeb; */
+      background-color: #e8e8e8;
+      /* width: 40%; */
+      overflow: hidden;
+      box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, .2);
+      padding: 0.5rem;
+      /* height: 470px; */
+    }
+    body .output.alone {
+      clear: both;
+      width: 99%;
+      margin: 0 auto;
+    }
+    body .info.alone.auto-height {
+      box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, .2);
+      padding: 0.5rem;
+      clear: both;
+      width: 100%;
+      margin: 0 auto;
+      height: auto;
+      background-color: white;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+    }
+    body .info.alone.auto-height > span {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    body .info.alone.auto-height > button {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
+      color: red;
+    }
+    body .info.alone.auto-height > button:hover {
+      box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+      color: black;
+    }
+
+    body .output > section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 25.25rem;
+      height: 25.25rem;
+      padding: 0;
+    }
+    body .output.alone > section {
+      width: 99%;
+    }
+    body .output > section > .example-element {
+      width: 90%;
+      height: 90%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      /* background-color: #5b6dcd; */
+      /* background-color: #d2c5dd; */
+      background-color: #ced7ef;
+      /* color: #fff; */
+      padding: 0.25rem 0;
+    }
+    body .output.alone > section > .example-element {
+      width: 99%;
+    }
+    body .output > section > .example-element.p-container {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    body .output > section > .example-element.p-container > div {
+      border: 1px solid gray;
+      width: 43%;
+      height: min-content;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    body .output.alone > section > .example-element.p-container > div {
+      width: 12%;
+    }
+    body .output > section > .example-element.p-container > div > div {
+      padding: 0;
+      width: 100%;
+      /* border: 1px solid red; */
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      position: relative;
+    }
+    body .output > section > .example-element.p-container > div > div::after {
+      content: " ";
+      border-bottom: 1px solid gray;
+      width: 100%;
+      position: absolute;
+    }
+    body .output > section > .example-element.p-container > div > div span.lbl {
+      text-align: start;
+      padding: 0 0 0 0.2rem;
+      flex: 0 0 5.9rem;
+    }
+    body .output > section > .example-element.p-container > div > div span.lbl-head {
+      text-align: start;
+      padding: 0 0 0 0.2rem;
+    }
+    body .output > section > .example-element.p-container > div > div span.val {
+      border-left: 1px solid gray;
+      padding: 0 0 0 0.2rem;
+    }
+
+    body .output > section > .example-element {
+      border: 2px solid black;
+    }
+
+
+    body .output:nth-of-type(1) > section > .example-element {
+      box-shadow: 1px 1px 1px 1px red;
+    }
+    body .output:nth-of-type(2) > section > .example-element {
+      box-shadow: -1px 1px 1px 1px red;
+    }
+    body .output:nth-of-type(3) > section > .example-element {
+      box-shadow: 1px -1px 1px 1px red;
+    }
+    body .output:nth-of-type(4) > section > .example-element {
+      box-shadow: -1px -1px 1px 1px red;
+    }
+
+    body .output:nth-of-type(5) > section > .example-element {
+      box-shadow: inset 1px 1px 1px 1px red;
+    }
+    body .output:nth-of-type(6) > section > .example-element {
+      box-shadow: inset -1px 1px 1px 1px red;
+    }
+    body .output:nth-of-type(7) > section > .example-element {
+      box-shadow: inset -1px -1px 1px 1px red;
+    }
+    body .output:nth-of-type(8) > section > .example-element {
+      box-shadow: inset -1px -1px 1px 1px red;
+    }
+
+    body .output:nth-of-type(9) > section > .example-element {
+      box-shadow: 1px 1px 1px 1px red, 2px 2px 2px 2px green;
+    }
+    body .output:nth-of-type(10) > section > .example-element {
+      box-shadow: inset 1px 1px 1px 1px red, 1px 1px 1px 1px green;
+    }
+    body .output:nth-of-type(11) > section > .example-element {
+      box-shadow: 1px 1px 1px 1px red, inset 1px 1px 1px 1px green;
+    }
+    body .output:nth-of-type(12) > section > .example-element {
+      box-shadow: inset 1px 1px 1px 1px red, inset 2px 2px 2px 2px green;
+    }
+
+    body .output:nth-of-type(13) > section > .example-element {
+      border: 0 none;
+      box-shadow: 0 0 0 1px red;
+    }
+    body .output:nth-of-type(14) > section > .example-element {
+      border: 0 none;
+      box-shadow: 1px 1px 0 0 red, -1px -1px 0 0 red;
+    }
+    body .output:nth-of-type(15) > section > .example-element {
+      border: 0 none;
+      box-shadow: -1px 0 0 0 red, 0 -1px 0 0 red, 1px 0 0 0 red, 0 1px 0 0 red;
+    }
+
+    body .output:nth-of-type(16) > section > .example-element {
+      border: 0 none;
+      box-shadow: 0 0 10px 0 gray;
+    }
+    body .output:nth-of-type(17) > section > .example-element {
+      border: 0 none;
+      box-shadow: inset 0 0 10px 0 gray;
+    }
+    body .output:nth-of-type(18) > section > .example-element {
+      border: 0 none;
+      box-shadow: 5px 5px 10px 0 gray;
+    }
+    body .output:nth-of-type(19) > section > .example-element {
+      border: 0 none;
+      box-shadow: -5px -5px 10px 0 gray;
+    }
+    body .output:nth-of-type(20) > section > .example-element {
+      border: 0 none;
+      box-shadow: 5px 5px 20px 0 gray;
+    }
+    body .output:nth-of-type(21) > section > .example-element {
+      border: 0 none;
+      box-shadow: 0 0 10px 5px gray;
+    }
+    body .output:nth-of-type(22) > section > .example-element {
+      border: 0 none;
+      box-shadow: 0 10px 10px -5px gray;
+    }
+    body .output:nth-of-type(23) > section > .example-element {
+      border: 0 none;
+      box-shadow: -5px -5px 15px 5px red, 5px 5px 15px 5px green;
+    }
+    body .output:nth-of-type(24) > section > .example-element {
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: inset 0 11px 8px -10px gray, inset 0 -11px 8px -10px gray, -11px 0 8px -10px gray, 11px 0 8px -10px gray;
+    }
+    body .output:nth-of-type(25) {
+      background-color: #ced7ef;
+    }
+    body .output:nth-of-type(25) > section > .example-element {
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 0.05), 2px 2px 3px 0 rgba(0, 0, 0, 0.15);
+    }
+    body .output:nth-of-type(26) {
+      background-color: white;
+    }
+    body .output:nth-of-type(26) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 0.05), 2px 2px 3px 0 rgba(0, 0, 0, 0.15);
+    }
+    body .output:nth-of-type(27) {
+      background-color: white;
+    }
+    body .output:nth-of-type(27) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: 0 -15px 20px -20px gainsboro, -15px 0 20px -20px gainsboro, 2px 2px 3px 0 lightgray;
+    }
+    body .output:nth-of-type(28) {
+      background-color: white;
+    }
+    body .output:nth-of-type(28) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      /* box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0 30px 60px -30px, rgba(10, 37, 64, 0.35) 0 -2px 6px 0 inset; */
+      box-shadow: #ccccd7 0 50px 100px -20px, #b3b3b3 0 30px 60px -30px, #a9b3bc 0 -2px 6px 0 inset;
+    }
+    body .output:nth-of-type(29) {
+      background-color: white;
+    }
+    body .output:nth-of-type(29) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
+    }
+    body .output:nth-of-type(30) {
+      background-color: white;
+    }
+    body .output:nth-of-type(30) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+    }
+    body .output:nth-of-type(31) {
+      background-color: white;
+    }
+    body .output:nth-of-type(31) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+    }
+    body .output:nth-of-type(32) {
+      background-color: white;
+    }
+    body .output:nth-of-type(32) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
+    }
+    body .output:nth-of-type(33) {
+      background-color: white;
+    }
+    body .output:nth-of-type(33) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+    }
+    body .output:nth-of-type(34) {
+      background-color: white;
+    }
+    body .output:nth-of-type(34) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(14, 30, 37, 0.12) 0 2px 4px 0, rgba(14, 30, 37, 0.32) 0 2px 16px 0;
+    }
+    body .output:nth-of-type(35) {
+      background-color: white;
+    }
+    body .output:nth-of-type(35) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em;
+    }
+    body .output:nth-of-type(36) {
+      background-color: white;
+    }
+    body .output:nth-of-type(36) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(3, 102, 214, 0.3) 0 0 0 3px;
+    }
+    body .output:nth-of-type(37) {
+      background-color: white;
+    }
+    body .output:nth-of-type(37) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 12px 28px 0, rgba(0, 0, 0, 0.1) 0 2px 4px 0, rgba(255, 255, 255, 0.05) 0 0 0 1px inset;
+    }
+    body .output:nth-of-type(38) {
+      background-color: white;
+    }
+    body .output:nth-of-type(38) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.1) 0 8px 24px, rgba(17, 17, 26, 0.1) 0 16px 56px;
+    }
+    body .output:nth-of-type(39) {
+      background-color: white;
+    }
+    body .output:nth-of-type(39) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.15) 0 15px 25px, rgba(0, 0, 0, 0.05) 0 5px 10px;
+    }
+    body .output:nth-of-type(40) {
+      background-color: white;
+    }
+    body .output:nth-of-type(40) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.08) 0 4px 12px;
+    }
+    body .output:nth-of-type(41) {
+      background-color: white;
+    }
+    body .output:nth-of-type(41) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px;
+    }
+    body .output:nth-of-type(42) {
+      background-color: white;
+    }
+    body .output:nth-of-type(42) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+    }
+    body .output:nth-of-type(43) {
+      background-color: white;
+    }
+    body .output:nth-of-type(43) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.4) 0 30px 90px;
+    }
+    body .output:nth-of-type(44) {
+      background-color: white;
+    }
+    body .output:nth-of-type(44) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+    }
+    body .output:nth-of-type(45) {
+      background-color: white;
+    }
+    body .output:nth-of-type(45) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 20px 30px;
+    }
+    body .output:nth-of-type(46) {
+      background-color: white;
+    }
+    body .output:nth-of-type(46) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(255, 255, 255, 0.2) 0 0 0 1px inset, rgba(0, 0, 0, 0.9) 0 0 0 1px;
+    }
+    body .output:nth-of-type(47) {
+      background-color: white;
+    }
+    body .output:nth-of-type(47) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0 0 0 1px inset;
+    }
+    body .output:nth-of-type(48) {
+      background-color: white;
+    }
+    body .output:nth-of-type(48) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.09) 0 3px 12px;
+    }
+    body .output:nth-of-type(49) {
+      background-color: white;
+    }
+    body .output:nth-of-type(49) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
+    }
+    body .output:nth-of-type(50) {
+      background-color: white;
+    }
+    body .output:nth-of-type(50) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px, rgb(209, 213, 219) 0 0 0 1px inset;
+    }
+    body .output:nth-of-type(51) {
+      background-color: white;
+    }
+    body .output:nth-of-type(51) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0 -50px 36px -28px inset;
+    }
+    body .output:nth-of-type(52) {
+      background-color: white;
+    }
+    body .output:nth-of-type(52) > section > .example-element {
+      background-color: white;
+      border: 0 none;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px 0 inset, rgba(0, 0, 0, 0.15) 0 -36px 30px 0 inset, rgba(0, 0, 0, 0.1) 0 -79px 40px 0 inset, rgba(0, 0, 0, 0.06) 0 2px 1px, rgba(0, 0, 0, 0.09) 0 4px 2px, rgba(0, 0, 0, 0.09) 0 8px 4px, rgba(0, 0, 0, 0.09) 0 16px 8px, rgba(0, 0, 0, 0.09) 0 32px 16px;
+    }
+    /*]]>*/
+  </style>
+
+  <script>//<![CDATA[
+  function showOrHideInternal(target) {
+      let clearedState = false;
+      if (target.hasAttribute("cleared")) {
+          clearedState = target.getAttribute("cleared") === 'true';
+      }
+      target.setAttribute("cleared", clearedState ? "false" : "true");
+      const children = target.querySelectorAll(":scope > div");
+      for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          element.style.display = clearedState ? "block" : "none";
+      }
+  }
+  function showOrHideAllInternal(target) {
+      let clearedState = false;
+      if (target.hasAttribute("cleared")) {
+          clearedState = target.getAttribute("cleared") === 'true';
+      }
+      target.setAttribute("cleared", clearedState ? "false" : "true");
+      const boxes = document.querySelectorAll("div.output.large > section.default-example > div.example-element");
+      for (let j = 0; j < boxes.length; j++) {
+          const box = boxes[j];
+          box.setAttribute("cleared", "false");
+          const children = box.querySelectorAll(":scope > div");
+          for (let i = 0; i < children.length; i++) {
+              const element = children[i];
+              element.style.display = clearedState ? "block" : "none";
+          }
+      }
+  }
+  function showOrHide(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const { target } = event;
+      showOrHideInternal(target);
+  }
+  function showOrHideFromParent(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const { target } = event;
+      const childTarget = target.querySelector(":scope > div");
+      showOrHideInternal(childTarget);
+  }
+  function showOrHideFromParentParent(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const { target } = event;
+      const childTarget = target.querySelector(":scope > section > div");
+      showOrHideInternal(childTarget);
+  }
+  function showOrHideAll(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const { target } = event;
+      showOrHideAllInternal(target);
+  }
+
+  window.addEventListener("DOMContentLoaded", function(event) {
+      event.preventDefault();
+      const button = document.querySelector("p.info.alone > button");
+      showOrHideAllInternal(button);
+  });
+  //]]></script>
+
+</head>
+
+<body>
+<p class="info alone auto-height">
+  <span>Click inside the box to hide or show the CSS values/details</span>
+  <button onclick="showOrHideAll(event)">Click here to hide/show details for all boxes</button>
+</p>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1 (neg)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1 (neg)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1 (neg)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1 (neg)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW 2</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">2px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">color:</span><span class="val">green</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW 2</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">green</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW 2</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">green</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW 1</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW 2</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">2px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">color:</span><span class="val">green</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">5px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">5px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-5px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-5px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">5px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">5px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">20px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">5px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">10px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-5px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-5px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-5px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">15px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">5px</span></div>
+        <div><span class="lbl">color:</span><span class="val">red</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">5px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">5px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">15px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">5px</span></div>
+        <div><span class="lbl">color:</span><span class="val">green</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">11px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">8px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-10px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-11px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">8px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-10px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-11px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">8px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-10px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">11px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">8px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gray</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#f2f2f2</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">2px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">3px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d9d9d9</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#f2f2f2</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">2px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">3px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d9d9d9</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-15px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">20px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-20px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gainsboro</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">-15px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">20px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-20px</span></div>
+        <div><span class="lbl">color:</span><span class="val">gainsboro</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">2px</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">3px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">lightgray</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">50px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">100px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-20px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#ccccd7</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">30px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">60px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-30px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#b3b3b3</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">6px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#a9b3bc</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">30px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">60px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-12px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#ccccd7</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">18px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">36px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-18px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#b3b3b3</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">3px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e0e0e0</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#c2c2c2</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#c5c6c7</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">3px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e2e2e3</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">1px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#c5c6c7</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">6px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e2e2e3</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">3px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">6px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d6d6d6</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">3px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">6px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#c4c4c4</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">4px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e2e4e5</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">16px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#b2b7b9</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0.25em</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#cccdd1</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0.25em</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1em</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#f7f9fc</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">3px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#b3d1f3</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">12px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">28px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#cccccc</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">12px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">28px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e6e6e6</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">white</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">4px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">16px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e7e7e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">8px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">24px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e7e7e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">16px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">56px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e7e7e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">15px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">25px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d9d9d9</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">5px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">10px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#f2f2f2</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">4px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">12px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#ebebeb</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">8px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d9d9d9</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">4px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d1d1d1</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">30px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">90px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#999999</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">22px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">70px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">4px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#707070</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">20px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">30px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#cccccc</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">white</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#191919</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0.0625em</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0.0625em</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#bfbfbf</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0.125em</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0.5em</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#bfbfbf</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">white</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">3px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">12px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e8e8e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">4px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#999999</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">7px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">13px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-3px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#b3b3b3</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-3px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#cccccc</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#f2f2f2</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">0</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d1d5db</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-50px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">36px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">-28px</span></div>
+        <div><span class="lbl">color:</span><span class="val">#a6a6a6</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="output large alone" onclick="showOrHideFromParentParent(event)">
+  <section class="default-example" onclick="showOrHideFromParent(event)">
+    <div class="example-element transition-all p-container" onclick="showOrHide(event)">
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-23px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">25px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d4d4d4</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-36px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">30px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#d9d9d9</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">inset</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">-79px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">40px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e6e6e6</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">2px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">1px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#f0f0f0</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">4px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">2px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e8e8e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">8px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">4px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e8e8e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">16px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">8px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e8e8e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl-head">SHADOW (borderless)</span></div>
+        <div><span class="lbl">inset:</span><span class="val">none</span></div>
+        <div><span class="lbl">offset-x:</span><span class="val">0</span></div>
+        <div><span class="lbl">offset-y:</span><span class="val">32px</span></div>
+        <div><span class="lbl">blur-radius:</span><span class="val">16px</span></div>
+        <div><span class="lbl">spread-radius:</span><span class="val">0</span></div>
+        <div><span class="lbl">color:</span><span class="val">#e8e8e8</span></div>
+      </div>
+      <div>
+        <div><span class="lbl">border-radius:</span><span class="val">1rem</span></div>
+        <div><span class="lbl">bg/color:</span><span class="val">white</span></div>
+      </div></div>
+  </section>
+</div>
+</body>
+
+</html>
